@@ -1,6 +1,6 @@
 package cijferschrijver.service;
 
-import cijferschrijver.Utility.TimestampGenerator;
+import cijferschrijver.utility.TimestampGenerator;
 import cijferschrijver.logging.AbstractCrudLogger;
 import cijferschrijver.model.Semester;
 import cijferschrijver.repository.SemesterRepository;

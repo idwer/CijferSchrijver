@@ -1,4 +1,4 @@
-package cijferschrijver.Utility;
+package cijferschrijver.utility;
 
 import java.sql.Timestamp;
 import java.util.Date;
