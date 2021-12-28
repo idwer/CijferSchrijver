@@ -4,31 +4,31 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="studieonderdeel")
-public class StudieOnderdeel {
+@Table(name="module")
+public class Module {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 20, nullable = false)
-    private String naam;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name="id_semester", nullable = false)
     private Semester semester;
 
     @OneToMany
-    @JoinColumn(name="subonderdeel")
-    private List<StudieOnderdeel> studieOnderdelen;
+    @JoinColumn(name="submodule")
+    private List<Module> modules;
 
-    public StudieOnderdeel() {
+    public Module() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getNaam() {
-        return naam;
+    public String getName() {
+        return name;
     }
 
     public Semester getSemester() {

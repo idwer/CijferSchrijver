@@ -3,8 +3,8 @@ package cijferschrijver.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class ResultaatId implements Serializable {
+public class ResultId implements Serializable {
     private Student student;
-    private StudieOnderdeel studieOnderdeel;
+    private Module module;
     private Timestamp timestamp;
 }

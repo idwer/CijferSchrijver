@@ -25,17 +25,17 @@ public class SemesterService<T> implements cijferschrijver.service.Service<T> {
     public Optional<Semester> find(Long id) {
         Semester semester = semesterRepository.findById(id).get();
         AbstractCrudLogger.writeEntry(String.format("Retrieved semester %s on %s",
-                semester.getNaam(),
+                semester.getName(),
                 TimestampGenerator.generateTimestamp()));
 
         return semesterRepository.findById(id);
     }
 
     public Semester save(Semester semester) {
-        if (semester.getNaam() != null)  {
+        if (semester.getName() != null)  {
             semesterRepository.save(semester);
             AbstractCrudLogger.writeEntry(String.format("Created semester %s on %s",
-                    semester.getNaam(),
+                    semester.getName(),
                     TimestampGenerator.generateTimestamp()));
 
             return semester;
@@ -49,7 +49,7 @@ public class SemesterService<T> implements cijferschrijver.service.Service<T> {
             semesterRepository.save(semester);
         }
         AbstractCrudLogger.writeEntry(String.format("Updated semester %s on %s",
-                semester.getNaam(),
+                semester.getName(),
                 TimestampGenerator.generateTimestamp()));
         return semester;
     }
@@ -58,7 +58,7 @@ public class SemesterService<T> implements cijferschrijver.service.Service<T> {
         if (semesterRepository.existsById(semester.getId())) {
             semesterRepository.deleteById(semester.getId());
             AbstractCrudLogger.writeEntry(String.format("Deleted semester %s on %s",
-                    semester.getNaam(),
+                    semester.getName(),
                     TimestampGenerator.generateTimestamp()));
             return semester;
         }

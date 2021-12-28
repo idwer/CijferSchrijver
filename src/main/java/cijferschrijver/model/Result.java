@@ -6,37 +6,37 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@IdClass(ResultaatId.class)
-public class Resultaat {
+@IdClass(ResultId.class)
+public class Result {
     @Id
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss.SSSSSS",  timezone = "Europe/Amsterdam")
     private Timestamp timestamp;
 
     @Column(nullable = false)
-    private Double cijfer;
+    private Double grade;
 
     @ManyToOne
     @JoinColumn(name="id_student", nullable = false)
     private Student student;
 
     @OneToOne
-    @JoinColumn(name="id_onderdeel", nullable = false)
-    private StudieOnderdeel studieOnderdeel;
+    @JoinColumn(name="id_module", nullable = false)
+    private Module module;
 
     @Transient
     @JsonFormat(shape = JsonFormat.Shape.NUMBER_INT)
-    private Long id_onderdeel;
+    private Long id_module;
 
     @Transient
     @JsonFormat(shape = JsonFormat.Shape.NUMBER_INT)
     private Long id_student;
 
-    public Resultaat() {
+    public Result() {
     }
 
-    public Resultaat(Double cijfer, Long id_onderdeel, Long id_student) {
-        this.cijfer = cijfer;
-        this.id_onderdeel = id_onderdeel;
+    public Result(Double grade, Long id_module, Long id_student) {
+        this.grade = grade;
+        this.id_module = id_module;
         this.id_student = id_student;
     }
 
@@ -44,12 +44,12 @@ public class Resultaat {
         this.timestamp = timestamp;
     }
 
-    public Long getIdOnderdeel() {
-        return this.studieOnderdeel.getId();
+    public Long getIdModule() {
+        return this.module.getId();
     }
 
-    public Double getCijfer() {
-        return cijfer;
+    public Double getGrade() {
+        return grade;
     }
 
     public Long getIdStudent() {
@@ -60,8 +60,8 @@ public class Resultaat {
         return timestamp;
     }
 
-    public StudieOnderdeel getStudieOnderdeel() {
-        return studieOnderdeel;
+    public Module getModule() {
+        return module;
     }
 
     public Student getStudent() {

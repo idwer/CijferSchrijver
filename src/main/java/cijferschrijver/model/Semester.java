@@ -9,10 +9,10 @@ public class Semester {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 20, nullable = false)
-    private String naam;
+    private String name;
 
     @OneToMany(mappedBy = "semester")
-    private List<StudieOnderdeel> studieonderdelen;
+    private List<Module> modules;
 
     @OneToMany(mappedBy = "semester")
     List<SemesterStudent> semesterStudents;
@@ -24,7 +24,7 @@ public class Semester {
         return id;
     }
 
-    public String getNaam() {
-        return naam;
+    public String getName() {
+        return name;
     }
 }

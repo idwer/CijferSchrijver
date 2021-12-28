@@ -4,7 +4,7 @@ import cijferschrijver.utility.TimestampGenerator;
 import cijferschrijver.logging.AbstractCrudLogger;
 import cijferschrijver.model.Result;
 import cijferschrijver.model.Student;
-import cijferschrijver.repository.ResultaatRepository;
+import cijferschrijver.repository.ResultRepository;
 import cijferschrijver.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ResultaatService<T> implements cijferschrijver.service.Service<T> {
+public class ResultService<T> implements cijferschrijver.service.Service<T> {
     @Autowired
-    private ResultaatRepository resultaatRepository;
+    private ResultRepository resultRepository;
     @Autowired
     private StudentRepository studentRepository;
 
@@ -24,77 +24,77 @@ public class ResultaatService<T> implements cijferschrijver.service.Service<T> {
         AbstractCrudLogger.writeEntry(String.format("Retrieved every result on %s",
                 TimestampGenerator.generateTimestamp()));
 
-        return (List<Result>) resultaatRepository.findAll();
+        return (List<Result>) resultRepository.findAll();
     }
 
     public Optional<Result> find(Long id) {
-        Long studentId = resultaatRepository.findById(id).get().getIdStudent();
+        Long studentId = resultRepository.findById(id).get().getIdStudent();
 
         AbstractCrudLogger.writeEntry(String.format("Retrieved results for module %s, ",
                 "student %s %s (ID %d), on %s",
-                resultaatRepository.findById(id).get().getStudieOnderdeel().getNaam(),
-                studentRepository.findById(studentId).get().getVoornaam(),
-                studentRepository.findById(studentId).get().getAchternaam(),
+                resultRepository.findById(id).get().getModule().getName(),
+                studentRepository.findById(studentId).get().getName(),
+                studentRepository.findById(studentId).get().getSurname(),
                 studentRepository.findById(studentId).get().getId(),
                 TimestampGenerator.generateTimestamp()));
 
-        return resultaatRepository.findById(id);
+        return resultRepository.findById(id);
     }
 
-    public Result save(Result resultaat) {
-        resultaat.setTimestamp(TimestampGenerator.generateTimestamp());
-        Student student = studentRepository.findById(resultaat.getIdStudent()).get();
+    public Result save(Result result) {
+        result.setTimestamp(TimestampGenerator.generateTimestamp());
+        Student student = studentRepository.findById(result.getIdStudent()).get();
 
-        if (resultaat.getCijfer() != null && resultaat.getIdOnderdeel() != null && resultaat.getIdStudent() != null) {
-            resultaatRepository.save(resultaat);
+        if (result.getGrade() != null && result.getIdModule() != null && result.getIdStudent() != null) {
+            resultRepository.save(result);
 
             AbstractCrudLogger.writeEntry(String.format("Created results for student %s %s (ID %d), ",
                     "module %s on %s",
-                    student.getVoornaam(),
-                    student.getAchternaam(),
+                    student.getName(),
+                    student.getSurname(),
                     student.getId(),
-                    resultaat.getStudieOnderdeel().getNaam(),
+                    result.getModule().getName(),
                     TimestampGenerator.generateTimestamp()));
 
-            return resultaat;
+            return result;
         }
 
         return null;
     }
 
-    public Result update(Result resultaat) {
-        Student student = studentRepository.findById(resultaat.getIdStudent()).get();
+    public Result update(Result result) {
+        Student student = studentRepository.findById(result.getIdStudent()).get();
 
-        if (resultaatRepository.existsById(resultaat.getIdStudent())) {
-            resultaatRepository.save(resultaat);
+        if (resultRepository.existsById(result.getIdStudent())) {
+            resultRepository.save(result);
 
             AbstractCrudLogger.writeEntry(String.format("Updated results for student %s %s (ID %d), ",
                     "module %s on %s",
-                    student.getVoornaam(),
-                    student.getAchternaam(),
+                    student.getName(),
+                    student.getSurname(),
                     student.getId(),
-                    resultaat.getStudieOnderdeel().getNaam(),
+                    result.getModule().getName(),
                     TimestampGenerator.generateTimestamp()));
         }
 
-        return resultaat;
+        return result;
     }
 
-    public Result delete(Result resultaat) {
-        Student student = studentRepository.findById(resultaat.getIdStudent()).get();
+    public Result delete(Result result) {
+        Student student = studentRepository.findById(result.getIdStudent()).get();
 
-        if (resultaatRepository.existsById(resultaat.getIdStudent())) {
-            resultaatRepository.deleteById(resultaat.getIdStudent());
+        if (resultRepository.existsById(result.getIdStudent())) {
+            resultRepository.deleteById(result.getIdStudent());
 
             AbstractCrudLogger.writeEntry(String.format("Deleted results for student %s %s (ID %d), ",
                     "module %s on %s",
-                    student.getVoornaam(),
-                    student.getAchternaam(),
+                    student.getName(),
+                    student.getSurname(),
                     student.getId(),
-                    resultaat.getStudieOnderdeel().getNaam(),
+                    result.getModule().getName(),
                     TimestampGenerator.generateTimestamp()));
 
-            return resultaat;
+            return result;
         }
 
         return null;

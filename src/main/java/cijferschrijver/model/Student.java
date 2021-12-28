@@ -9,12 +9,12 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 50, nullable = false)
-    private String voornaam;
+    private String name;
     @Column(length = 100, nullable = false)
-    private String achternaam;
+    private String surname;
 
     @OneToMany(mappedBy = "student")
-    private List<Resultaat> resultaten;
+    private List<Result> results;
 
     @OneToMany(mappedBy = "student")
     List<SemesterStudent> semesterStudents;
@@ -22,21 +22,21 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String voornaam, String achternaam) {
+    public Student(Long id, String name, String surname) {
         this.id = id;
-        this.voornaam = voornaam;
-        this.achternaam = achternaam;
+        this.name = name;
+        this.surname = surname;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getVoornaam() {
-        return voornaam;
+    public String getName() {
+        return name;
     }
 
-    public String getAchternaam() {
-        return achternaam;
+    public String getSurname() {
+        return surname;
     }
 }

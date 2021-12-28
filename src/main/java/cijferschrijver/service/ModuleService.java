@@ -2,8 +2,8 @@ package cijferschrijver.service;
 
 import cijferschrijver.utility.TimestampGenerator;
 import cijferschrijver.logging.AbstractCrudLogger;
-import cijferschrijver.model.StudieOnderdeel;
-import cijferschrijver.repository.StudieOnderdeelRepository;
+import cijferschrijver.model.Module;
+import cijferschrijver.repository.ModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,61 +11,61 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudieOnderdeelService<T> implements cijferschrijver.service.Service<T> {
+public class ModuleService<T> implements cijferschrijver.service.Service<T> {
     @Autowired
-    private StudieOnderdeelRepository studieOnderdeelRepository;
+    private ModuleRepository moduleRepository;
 
     @Override
-    public List<StudieOnderdeel> findAll() {
+    public List<Module> findAll() {
         AbstractCrudLogger.writeEntry(String.format("Retrieved every module on %s",
                 TimestampGenerator.generateTimestamp()));
 
-        return (List<StudieOnderdeel>) studieOnderdeelRepository.findAll();
+        return (List<Module>) moduleRepository.findAll();
     }
 
-    public Optional<StudieOnderdeel> find(Long id) {
-        StudieOnderdeel studieOnderdeel = studieOnderdeelRepository.findById(id).get();
+    public Optional<Module> find(Long id) {
+        Module module = moduleRepository.findById(id).get();
 
         AbstractCrudLogger.writeEntry(String.format("Retrieved module %s on %s",
-                studieOnderdeel.getNaam(),
+                module.getName(),
                 TimestampGenerator.generateTimestamp()));
 
-        return studieOnderdeelRepository.findById(id);
+        return moduleRepository.findById(id);
     }
 
-    public StudieOnderdeel save(StudieOnderdeel studieOnderdeel) {
-        if (studieOnderdeel.getNaam() != null && studieOnderdeel.getSemester() != null)  {
-            studieOnderdeelRepository.save(studieOnderdeel);
+    public Module save(Module module) {
+        if (module.getName() != null && module.getSemester() != null)  {
+            moduleRepository.save(module);
 
             AbstractCrudLogger.writeEntry(String.format("Created module %s on %s",
-                    studieOnderdeel.getNaam(),
+                    module.getName(),
                     TimestampGenerator.generateTimestamp()));
 
-            return studieOnderdeel;
+            return module;
         }
 
         return null;
     }
 
-    public StudieOnderdeel update(StudieOnderdeel studieOnderdeel) {
-        if (studieOnderdeelRepository.existsById(studieOnderdeel.getId())) {
-            studieOnderdeelRepository.save(studieOnderdeel);
+    public Module update(Module module) {
+        if (moduleRepository.existsById(module.getId())) {
+            moduleRepository.save(module);
             AbstractCrudLogger.writeEntry(String.format("Updated module %s on %s",
-                    studieOnderdeel.getNaam(),
+                    module.getName(),
                     TimestampGenerator.generateTimestamp()));
         }
 
-        return studieOnderdeel;
+        return module;
     }
 
-    public StudieOnderdeel delete(StudieOnderdeel studieOnderdeel) {
-        if (studieOnderdeelRepository.existsById(studieOnderdeel.getId())) {
-            studieOnderdeelRepository.deleteById(studieOnderdeel.getId());
+    public Module delete(Module module) {
+        if (moduleRepository.existsById(module.getId())) {
+            moduleRepository.deleteById(module.getId());
             AbstractCrudLogger.writeEntry(String.format("Deleted module %s on %s",
-                    studieOnderdeel.getNaam(),
+                    module.getName(),
                     TimestampGenerator.generateTimestamp()));
 
-            return studieOnderdeel;
+            return module;
         }
 
         return null;

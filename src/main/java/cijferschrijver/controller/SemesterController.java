@@ -36,7 +36,7 @@ public class SemesterController {
     }
 
     // add a record using, for example, curl:
-    // curl -v -H "content-type: application/json" -d '{"naam" : "H-SE-OOSE"}' -X POST http://localhost:8080/semester/add
+    // curl -v -H "content-type: application/json" -d '{"name" : "H-SE-OOSE"}' -X POST http://localhost:8080/semester/add
     @PostMapping(path = "/semester/add",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

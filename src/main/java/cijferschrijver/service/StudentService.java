@@ -28,8 +28,8 @@ public class StudentService<T> implements cijferschrijver.service.Service<T> {
         Student logStudent = student.get();
 
         AbstractCrudLogger.writeEntry(String.format("Retrieved student %s %s (ID %d) on %s",
-                logStudent.getVoornaam(),
-                logStudent.getAchternaam(),
+                logStudent.getName(),
+                logStudent.getSurname(),
                 logStudent.getId(),
                 TimestampGenerator.generateTimestamp()));
 
@@ -37,12 +37,12 @@ public class StudentService<T> implements cijferschrijver.service.Service<T> {
     }
 
     public Student save(Student student) {
-        if (student.getVoornaam() != null && student.getAchternaam() != null) {
+        if (student.getName() != null && student.getSurname() != null) {
             studentRepository.save(student);
 
             AbstractCrudLogger.writeEntry(String.format("Created student %s %s (ID %d) on %s",
-                    student.getVoornaam(),
-                    student.getAchternaam(),
+                    student.getName(),
+                    student.getSurname(),
                     student.getId(),
                     TimestampGenerator.generateTimestamp()));
 
@@ -57,8 +57,8 @@ public class StudentService<T> implements cijferschrijver.service.Service<T> {
             studentRepository.save(student);
 
             AbstractCrudLogger.writeEntry(String.format("Updated student %s %s (ID %d) on %s",
-                    student.getVoornaam(),
-                    student.getAchternaam(),
+                    student.getName(),
+                    student.getSurname(),
                     student.getId(),
                     TimestampGenerator.generateTimestamp()));
         }
@@ -71,8 +71,8 @@ public class StudentService<T> implements cijferschrijver.service.Service<T> {
             studentRepository.deleteById(student.getId());
 
             AbstractCrudLogger.writeEntry(String.format("Deleted student %s %s (ID %d) on %s",
-                    student.getVoornaam(),
-                    student.getAchternaam(),
+                    student.getName(),
+                    student.getSurname(),
                     student.getId(),
                     TimestampGenerator.generateTimestamp()));
             return student;

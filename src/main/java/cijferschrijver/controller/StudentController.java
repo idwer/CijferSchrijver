@@ -36,7 +36,7 @@ public class StudentController implements Controller {
     }
 
     // add a record using, for example, curl:
-    // curl -v -H "content-type: application/json" -d '{"voornaam": "Barbara", "achternaam": "Liskov"}' -X POST http://localhost:8080/student/add
+    // curl -v -H "content-type: application/json" -d '{"name": "Barbara", "surname": "Liskov"}' -X POST http://localhost:8080/student/add
     @PostMapping(path = "/student/add",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
