@@ -2,7 +2,7 @@ package cijferschrijver.service;
 
 import cijferschrijver.utility.TimestampGenerator;
 import cijferschrijver.logging.AbstractCrudLogger;
-import cijferschrijver.model.Resultaat;
+import cijferschrijver.model.Result;
 import cijferschrijver.model.Student;
 import cijferschrijver.repository.ResultaatRepository;
 import cijferschrijver.repository.StudentRepository;
@@ -20,14 +20,14 @@ public class ResultaatService<T> implements cijferschrijver.service.Service<T> {
     private StudentRepository studentRepository;
 
     @Override
-    public List<Resultaat> findAll() {
+    public List<Result> findAll() {
         AbstractCrudLogger.writeEntry(String.format("Retrieved every result on %s",
                 TimestampGenerator.generateTimestamp()));
 
-        return (List<Resultaat>) resultaatRepository.findAll();
+        return (List<Result>) resultaatRepository.findAll();
     }
 
-    public Optional<Resultaat> find(Long id) {
+    public Optional<Result> find(Long id) {
         Long studentId = resultaatRepository.findById(id).get().getIdStudent();
 
         AbstractCrudLogger.writeEntry(String.format("Retrieved results for module %s, ",
@@ -41,7 +41,7 @@ public class ResultaatService<T> implements cijferschrijver.service.Service<T> {
         return resultaatRepository.findById(id);
     }
 
-    public Resultaat save(Resultaat resultaat) {
+    public Result save(Result resultaat) {
         resultaat.setTimestamp(TimestampGenerator.generateTimestamp());
         Student student = studentRepository.findById(resultaat.getIdStudent()).get();
 
@@ -62,7 +62,7 @@ public class ResultaatService<T> implements cijferschrijver.service.Service<T> {
         return null;
     }
 
-    public Resultaat update(Resultaat resultaat) {
+    public Result update(Result resultaat) {
         Student student = studentRepository.findById(resultaat.getIdStudent()).get();
 
         if (resultaatRepository.existsById(resultaat.getIdStudent())) {
@@ -80,7 +80,7 @@ public class ResultaatService<T> implements cijferschrijver.service.Service<T> {
         return resultaat;
     }
 
-    public Resultaat delete(Resultaat resultaat) {
+    public Result delete(Result resultaat) {
         Student student = studentRepository.findById(resultaat.getIdStudent()).get();
 
         if (resultaatRepository.existsById(resultaat.getIdStudent())) {
