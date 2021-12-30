@@ -19,6 +19,8 @@ public abstract class AbstractCrudLogger {
             fileHandlerCrud.setFormatter(simpleFormatter);
 
             crudLogger.info(message);
+
+            fileHandlerCrud.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,6 +34,8 @@ public abstract class AbstractCrudLogger {
             fileHandlerExceptions.setFormatter(simpleFormatter);
 
             exceptionLogger.info(message);
+
+            fileHandlerExceptions.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
