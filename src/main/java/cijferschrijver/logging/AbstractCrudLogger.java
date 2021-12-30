@@ -6,18 +6,19 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public abstract class AbstractCrudLogger {
-    private static final Logger logger = Logger.getLogger(AbstractCrudLogger.class.toString());
+    private static final Logger crudLogger = Logger.getLogger(AbstractCrudLogger.class.toString());
+    private static final Logger exceptionLogger = Logger.getLogger(AbstractCrudLogger.class.toString());
     private static FileHandler fileHandlerCrud;
     private static FileHandler fileHandlerExceptions;
 
     public static void writeEntry(String message) {
         try {
             fileHandlerCrud = new FileHandler("crud_operations.log", true);
-            logger.addHandler(fileHandlerCrud);
+            crudLogger.addHandler(fileHandlerCrud);
             SimpleFormatter simpleFormatter = new SimpleFormatter();
             fileHandlerCrud.setFormatter(simpleFormatter);
 
-            logger.info(message);
+            crudLogger.info(message);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,12 +26,12 @@ public abstract class AbstractCrudLogger {
 
     public static void writeException(String message) {
         try {
-            fileHandlerExceptions = new FileHandler("exceptions.log");
-            logger.addHandler(fileHandlerExceptions);
+            fileHandlerExceptions = new FileHandler("exceptions.log", true);
+            crudLogger.addHandler(fileHandlerExceptions);
             SimpleFormatter simpleFormatter = new SimpleFormatter();
             fileHandlerExceptions.setFormatter(simpleFormatter);
 
-            logger.info(message);
+            exceptionLogger.info(message);
         } catch (IOException e) {
             e.printStackTrace();
         }
