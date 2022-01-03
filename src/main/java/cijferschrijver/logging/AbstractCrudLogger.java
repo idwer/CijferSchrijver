@@ -29,7 +29,7 @@ public abstract class AbstractCrudLogger {
     public static void writeException(String message) {
         try {
             fileHandlerExceptions = new FileHandler("exceptions.log", true);
-            crudLogger.addHandler(fileHandlerExceptions);
+            exceptionLogger.addHandler(fileHandlerExceptions);
             SimpleFormatter simpleFormatter = new SimpleFormatter();
             fileHandlerExceptions.setFormatter(simpleFormatter);
 
