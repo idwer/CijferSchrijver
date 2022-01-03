@@ -28,7 +28,7 @@ public class ResultService<T> implements cijferschrijver.service.Service<T> {
     }
 
     public Optional<Result> find(Long id) {
-        Long studentId = resultRepository.findById(id).get().getIdStudent();
+        Long studentId = resultRepository.findById(id).get().getStudentId();
 
         AbstractCrudLogger.writeEntry(String.format("Retrieved results for module %s, ",
                 "student %s %s (ID %d), on %s",
@@ -43,9 +43,9 @@ public class ResultService<T> implements cijferschrijver.service.Service<T> {
 
     public Result save(Result result) {
         result.setTimestamp(TimestampGenerator.generateTimestamp());
-        Student student = studentRepository.findById(result.getIdStudent()).get();
+        Student student = studentRepository.findById(result.getStudentId()).get();
 
-        if (result.getGrade() != null && result.getIdModule() != null && result.getIdStudent() != null) {
+        if (result.getGrade() != null && result.getModuleId() != null && result.getStudentId() != null) {
             resultRepository.save(result);
 
             AbstractCrudLogger.writeEntry(String.format("Created results for student %s %s (ID %d), ",
@@ -63,9 +63,9 @@ public class ResultService<T> implements cijferschrijver.service.Service<T> {
     }
 
     public Result update(Result result) {
-        Student student = studentRepository.findById(result.getIdStudent()).get();
+        Student student = studentRepository.findById(result.getStudentId()).get();
 
-        if (resultRepository.existsById(result.getIdStudent())) {
+        if (resultRepository.existsById(result.getStudentId())) {
             resultRepository.save(result);
 
             AbstractCrudLogger.writeEntry(String.format("Updated results for student %s %s (ID %d), ",
@@ -81,10 +81,10 @@ public class ResultService<T> implements cijferschrijver.service.Service<T> {
     }
 
     public Result delete(Result result) {
-        Student student = studentRepository.findById(result.getIdStudent()).get();
+        Student student = studentRepository.findById(result.getStudentId()).get();
 
-        if (resultRepository.existsById(result.getIdStudent())) {
-            resultRepository.deleteById(result.getIdStudent());
+        if (resultRepository.existsById(result.getStudentId())) {
+            resultRepository.deleteById(result.getStudentId());
 
             AbstractCrudLogger.writeEntry(String.format("Deleted results for student %s %s (ID %d), ",
                     "module %s on %s",

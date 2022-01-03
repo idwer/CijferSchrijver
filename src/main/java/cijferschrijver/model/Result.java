@@ -44,7 +44,7 @@ public class Result {
         this.timestamp = timestamp;
     }
 
-    public Long getIdModule() {
+    public Long getModuleId() {
         return this.module.getId();
     }
 
@@ -52,7 +52,7 @@ public class Result {
         return grade;
     }
 
-    public Long getIdStudent() {
+    public Long getStudentId() {
         return this.student.getId();
     }
 
