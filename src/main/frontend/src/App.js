@@ -14,6 +14,7 @@ function App() {
             <BrowserRouter>
                 <h1>Navigation</h1>
                 <nav>
+                    <Link to="/">Home </Link><br/>
                     <Link to="/get/students"> List of Students</Link><br/>
                     <Link to="/add/student"> Add Student</Link><br/>
                 </nav>
