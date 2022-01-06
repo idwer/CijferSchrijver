@@ -26,22 +26,10 @@ class App extends Component {
                 <header className="App-Header">
                     <div className="App-intro">
                         <h2>List of students</h2>
+                        ID: Name:
                         {students.map(student =>
                             <div key={student.id}>
-                                <ul>
-                                    <li>{student.id} {student.name} {student.surname}</li>
-                                </ul>
-                            </div>
-                        )}
-                        <td>ID</td><td></td><td>Name</td><td>Surname</td>
-                        {students.map(student =>
-                            <div key={student.id}>
-                                <tr>
-                                    <td>{student.id}</td>
-                                    <a href="/student/{student.id}">hyperlink</a>
-                                    <td>{student.name}</td>
-                                    <td>{student.surname}</td>
-                                </tr>
+                                {student.id} {student.name} {student.surname}
                             </div>
                         )}
                     </div>
