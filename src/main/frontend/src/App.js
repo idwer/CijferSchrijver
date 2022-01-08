@@ -8,6 +8,7 @@ import AddModule from "./AddModule";
 import GetModules from "./GetModules";
 import AddSemester from "./AddSemester";
 import GetSemesters from "./GetSemesters";
+import GetResults from "./GetResults";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Link to="/get/modules"> List of Modules</Link><br/>
                     <Link to="/add/semester"> Add Semester</Link><br/>
                     <Link to="/get/semesters"> List of Semesters</Link><br/>
+                    <Link to="/get/results"> List of Results</Link><br/>
                 </nav>
             <Routes>
                 <Route path="/get/students" element={<GetStudents />} />
@@ -33,6 +35,7 @@ function App() {
                 <Route path="/get/modules" element={<GetModules />} />
                 <Route path="/add/semester" element={<AddSemester />} />
                 <Route path="/get/semesters" element={<GetSemesters />} />
+                <Route path="/get/results" element={<GetResults />} />
             </Routes>
             </BrowserRouter>
         </div>
