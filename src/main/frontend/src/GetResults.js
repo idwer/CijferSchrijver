@@ -29,7 +29,8 @@ class App extends Component {
                         Timestamp: Grade: Student ID: Student Name: Module ID: Module name: Semester ID: Semester name:
                         {results.map(result =>
                             <div key={result.timestamp}>
-                                {result.timestamp} {result.grade} {result.student.id} {result.student.name} {result.student.surname} {result.module.id} {result.module.name} {result.module.semester.id} {result.module.semester.name} {<result className="student surname"></result>}
+                                {result.timestamp} {result.grade} {result.student.id} {result.student.name} {result.student.surname} {result.module.id} {result.module.name}
+                                {result.module.semester.id} {result.module.semester.name}
                             </div>
                         )}
                     </div>
