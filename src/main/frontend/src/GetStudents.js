@@ -26,12 +26,19 @@ class App extends Component {
                 <header className="App-Header">
                     <div className="App-intro">
                         <h2>List of students</h2>
-                        ID: Name:
-                        {students.map(student =>
-                            <div key={student.id}>
-                                {student.id} {student.name} {student.surname}
-                            </div>
-                        )}
+                        <table border="1">
+                            <tr align="right">
+                                <th>ID:</th>
+                                <th colSpan="2">Name:</th>
+                            </tr>
+                        {students.map((student) => (
+                            <tr align="right">
+                                <td>{student.id}</td>
+                                <td>{student.name}</td>
+                                <td>{student.surname}</td>
+                            </tr>
+                        ))}
+                        </table>
                     </div>
                 </header>
             </div>

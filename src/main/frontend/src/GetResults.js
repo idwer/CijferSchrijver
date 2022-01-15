@@ -26,13 +26,31 @@ class App extends Component {
                 <header className="App-Header">
                     <div className="App-intro">
                         <h2>List of results</h2>
-                        Timestamp: Grade: Student ID: Student Name: Module ID: Module name: Semester ID: Semester name:
-                        {results.map(result =>
-                            <div key={result.timestamp}>
-                                {result.timestamp} {result.grade} {result.student.id} {result.student.name} {result.student.surname} {result.module.id} {result.module.name}
-                                {result.module.semester.id} {result.module.semester.name}
-                            </div>
-                        )}
+                        <table border="1">
+                            <tr align="right">
+                                <th>Timestamp:</th>
+                                <th>Grade:</th>
+                                <th>Student ID:</th>
+                                <th colSpan="2">Student Name:</th>
+                                <th>Module ID:</th>
+                                <th>Module name:</th>
+                                <th>Semester ID:</th>
+                                <th>Semester name:</th>
+                            </tr>
+                        {results.map((result) => (
+                                <tr align="right">
+                                    <td>{result.timestamp}</td>
+                                    <td>{result.grade}</td>
+                                    <td>{result.student.id}</td>
+                                    <td>{result.student.name}</td>
+                                    <td>{result.student.surname}</td>
+                                    <td>{result.module.id}</td>
+                                    <td>{result.module.name}</td>
+                                    <td>{result.module.semester.id}</td>
+                                    <td>{result.module.semester.name}</td>
+                                </tr>
+                            ))}
+                        </table>
                     </div>
                 </header>
             </div>
