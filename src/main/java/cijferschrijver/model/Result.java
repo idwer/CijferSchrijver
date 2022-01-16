@@ -17,10 +17,12 @@ public class Result {
 
     @ManyToOne
     @JoinColumn(name="id_student", nullable = false)
+    @Id
     private Student student;
 
     @OneToOne
     @JoinColumn(name="id_module", nullable = false)
+    @Id
     private Module module;
 
     @Transient
