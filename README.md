@@ -26,6 +26,7 @@ After creating a user and a database, change ```src/main/resources/application.p
 
 # Running the Spring application
 In the top level directory, run:
+
 	mvn spring-boot:run
 
 The web application should now be reachable at http://localhost:3000/
