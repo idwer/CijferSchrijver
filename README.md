@@ -1,6 +1,6 @@
 # CijferSchrijver
 
-This is a portfolio project to demonstrate knowledge of PostgreSQL, Java 8, Jakarta Persistence (JPA), and ReactJS.
+This is a portfolio project to demonstrate knowledge of PostgreSQL, Java 8, Jakarta Persistence (JPA), and ReactJS. The project is a proof of concept gradebook application.
 
 In order to start the web application, which is at the moment split into backend and frontend code: follow the instructions below.
 
