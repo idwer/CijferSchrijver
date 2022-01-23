@@ -22,7 +22,7 @@ After creating a user and a database, change ```src/main/resources/application.p
 # Running the ReactJS application
 	cd src/main/frontend/
 	npm install
-	npm run
+	npm start
 
 # Running the Spring application
 In the top level directory, run:
