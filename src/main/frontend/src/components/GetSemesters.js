@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Col, Container, Row } from "react-bootstrap";
 
-import Semester from "./components/orm/Semester";
+import Semester from "./orm/Semester";
 
 export default function GetSemesters() {
     const [Semesters, fetchSemesters] = useState([])

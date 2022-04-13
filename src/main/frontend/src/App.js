@@ -3,14 +3,14 @@ import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
 
 import './App.css';
 
-import GetStudents from "./GetStudents";
-import AddStudent from "./AddStudent";
-import GetModules from "./GetModules";
-import AddModule from "./AddModule";
-import GetSemesters from "./GetSemesters";
-import AddSemester from "./AddSemester";
-import GetResults from "./GetResults";
-import AddResult from "./AddResult";
+import GetStudents from "./components/GetStudents";
+import AddStudent from "./components/AddStudent";
+import GetModules from "./components/GetModules";
+import AddModule from "./components/AddModule";
+import GetSemesters from "./components/GetSemesters";
+import AddSemester from "./components/AddSemester";
+import GetResults from "./components/GetResults";
+import AddResult from "./components/AddResult";
 
 export default function App() {
     return (

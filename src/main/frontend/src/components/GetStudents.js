@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Col, Container, Row } from "react-bootstrap";
 
-import Student from "./components/orm/Student";
+import Student from "./orm/Student";
 
 export default function GetStudents() {
     const [Students, fetchStudents] = useState([])
