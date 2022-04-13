@@ -48,8 +48,7 @@ public class ResultService<T> implements cijferschrijver.service.Service<T> {
         if (result.getGrade() != null && result.getModuleId() != null && result.getStudentId() != null) {
             resultRepository.save(result);
 
-            AbstractCrudLogger.writeEntry(String.format("Created results for student %s %s (ID %d), ",
-                    "module %s on %s",
+            AbstractCrudLogger.writeEntry(String.format("Created results for student %s %s (ID %d), module %s on %s",
                     student.getName(),
                     student.getSurname(),
                     student.getId(),
