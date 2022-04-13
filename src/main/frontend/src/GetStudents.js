@@ -1,49 +1,46 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Col, Container, Row } from "react-bootstrap";
 
-class App extends Component {
-    state = {
-        isLoading: true,
-        students: []
-    };
+import Student from "./components/orm/Student";
 
-    async componentDidMount() {
-        const response = await fetch('/api/students');
-        const body = await response.json();
-        this.setState({ students: body, isLoading: false });
+export default function GetStudents() {
+    const [Students, fetchStudents] = useState([])
+
+    const getStudents = () => {
+        fetch('/api/students')
+            .then((res) => res.json())
+            .then((res) => {
+                fetchStudents(res)
+        })
     }
 
-    render() {
-        const {students, isLoading} = this.state;
+    useEffect(() => {
+        getStudents()
+    }, [])
 
-        if (isLoading) {
-            return <p>Loading...</p>;
-        }
+    return (
+        <div>
+            <Container>
+                <b>
+                <Row>
+                    <Col>ID:</Col>
+                    <Col>Name:</Col>
+                    <Col>Last name:</Col>
+                </Row>
+                </b>
 
-        return (
-            <div className="App">
-                <header className="App-Header">
-                    <div className="App-intro">
-                        <h2>List of students</h2>
-                        <table border="1">
-                            <tr align="right">
-                                <th>ID:</th>
-                                <th colSpan="2">Name:</th>
-                            </tr>
-                        {students.map((student) => (
-                            <tr align="right">
-                                <td>{student.id}</td>
-                                <td>{student.name}</td>
-                                <td>{student.surname}</td>
-                            </tr>
-                        ))}
-                        </table>
-                    </div>
-                </header>
-            </div>
-        );
-    }
+                {Students.map((student) => {
+                    return (
+                        <Student
+                            id = {student.id}
+                            name = {student.name}
+                            surname = {student.surname}
+                        />
+                    );
+                })}
+            </Container>
+        </div>
+    );
 }
-
-export default App;

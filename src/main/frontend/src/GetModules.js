@@ -1,52 +1,48 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Col, Container, Row } from "react-bootstrap";
 
-class App extends Component {
-    state = {
-        isLoading: true,
-        modules: []
-    };
+import Module from "./components/orm/Module";
 
-    async componentDidMount() {
-        const response = await fetch('/api/modules');
-        const body = await response.json();
-        this.setState({ modules: body, isLoading: false });
+export default function GetModules() {
+    const [Modules, fetchModules] = useState([])
+
+    const getModules = () => {
+        fetch('/api/modules')
+            .then((res) => res.json())
+            .then((res) => {
+                fetchModules(res)
+            })
     }
 
-    render() {
-        const {modules, isLoading} = this.state;
+    useEffect(() => {
+        getModules()
+    }, [])
 
-        if (isLoading) {
-            return <p>Loading...</p>;
-        }
+    return (
+        <div>
+            <Container>
+                <b>
+                    <Row>
+                        <Col>ID:</Col>
+                        <Col>Name:</Col>
+                        <Col>Semester ID:</Col>
+                        <Col>Semester name:</Col>
+                    </Row>
+                </b>
 
-        return (
-            <div className="App">
-                <header className="App-Header">
-                    <div className="App-intro">
-                        <h2>List of modules</h2>
-                        <table border="1">
-                            <tr align="right">
-                                <th>ID:</th>
-                                <th>Name:</th>
-                                <th>Semester ID:</th>
-                                <th>Semester name:</th>
-                            </tr>
-                        {modules.map((module) => (
-                            <tr align="right">
-                                <td>{module.id}</td>
-                                <td>{module.name}</td>
-                                <td>{module.semester.id}</td>
-                                <td>{module.semester.name}</td>
-                            </tr>
-                            ))}
-                        </table>
-                    </div>
-                </header>
-            </div>
-        );
-    }
+                {Modules.map((module) => {
+                    return (
+                        <Module
+                            id = {module.id}
+                            name = {module.name}
+                            id_semester = {module.semester.id}
+                            submodule = {module.semester.name}
+                        />
+                    );
+                })}
+            </Container>
+        </div>
+    );
 }
-
-export default App;
