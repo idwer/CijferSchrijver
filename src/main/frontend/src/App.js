@@ -1,7 +1,8 @@
 import React from 'react';
-import {Link, BrowserRouter, Routes, Route} from "react-router-dom";
+import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
 
 import './App.css';
+
 import GetStudents from "./GetStudents";
 import AddStudent from "./AddStudent";
 import GetModules from "./GetModules";
@@ -11,7 +12,7 @@ import AddSemester from "./AddSemester";
 import GetResults from "./GetResults";
 import AddResult from "./AddResult";
 
-function App() {
+export default function App() {
     return (
         <div className="App">
           <header className="App-Header">
@@ -43,6 +44,4 @@ function App() {
             </BrowserRouter>
         </div>
     );
-  }
-
-export default App;
+}
