@@ -36,16 +36,16 @@ export default function App() {
                         </Row>
                     </Container>
                 </nav>
-            <Routes>
-                <Route path="/get/students" element={<GetStudents />} />
-                <Route path="/add/student" element={<AddStudent />} />
-                <Route path="/get/modules" element={<GetModules />} />
-                <Route path="/add/module" element={<AddModule />} />
-                <Route path="/get/semesters" element={<GetSemesters />} />
-                <Route path="/add/semester" element={<AddSemester />} />
-                <Route path="/get/results" element={<GetResults />} />
-                <Route path="/add/results" element={<AddResult />} />
-            </Routes>
+                <Routes>
+                    <Route path="/get/students" element={<GetStudents />} />
+                    <Route path="/add/student" element={<AddStudent />} />
+                    <Route path="/get/modules" element={<GetModules />} />
+                    <Route path="/add/module" element={<AddModule />} />
+                    <Route path="/get/semesters" element={<GetSemesters />} />
+                    <Route path="/add/semester" element={<AddSemester />} />
+                    <Route path="/get/results" element={<GetResults />} />
+                    <Route path="/add/results" element={<AddResult />} />
+                </Routes>
             </BrowserRouter>
         </div>
     );
