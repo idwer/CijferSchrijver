@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
+import { Col, Container, Row } from 'react-bootstrap';
 
 import './App.css';
 
@@ -21,15 +22,19 @@ export default function App() {
             <BrowserRouter>
                 <h1>Navigation</h1>
                 <nav>
-                    <Link to="/">Home </Link><br/>
-                    <Link to="/get/students"> List of Students</Link><br/>
-                    <Link to="/add/student"> Add Student</Link><br/>
-                    <Link to="/get/modules"> List of Modules</Link><br/>
-                    <Link to="/add/module"> Add Module</Link><br/>
-                    <Link to="/get/semesters"> List of Semesters</Link><br/>
-                    <Link to="/add/semester"> Add Semester</Link><br/>
-                    <Link to="/get/results"> List of Results</Link><br/>
-                    <Link to="/add/results"> Add Result</Link><br/>
+                    <Container>
+                        <Row>
+                            <Col><Link to="/">Home</Link></Col>
+                            <Col><Link to="/get/students"> List of Students</Link></Col>
+                            <Col><Link to="/add/student"> Add Student</Link></Col>
+                            <Col><Link to="/get/modules"> List of Modules</Link></Col>
+                            <Col><Link to="/add/module"> Add Module</Link></Col>
+                            <Col><Link to="/get/semesters"> List of Semesters</Link></Col>
+                            <Col><Link to="/add/semester"> Add Semester</Link></Col>
+                            <Col><Link to="/get/results"> List of Results</Link></Col>
+                            <Col><Link to="/add/results"> Add Result</Link></Col>
+                        </Row>
+                    </Container>
                 </nav>
             <Routes>
                 <Route path="/get/students" element={<GetStudents />} />
