@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function AddSemester() {
+export default function AddSemester() {
     const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
@@ -15,6 +15,7 @@ function AddSemester() {
                 body: JSON.stringify(semester)
             }
         );
+
         redirectAfterClick()
     }
 
@@ -39,5 +40,3 @@ function AddSemester() {
         </div>
     );
 }
-
-export default AddSemester

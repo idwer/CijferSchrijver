@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function AddModule() {
+export default function AddModule() {
     const [name, setName] = useState('');
     const [id_semester, setIdSemester] = useState('');
     const [submodule, setSubmodule] = useState('');
@@ -17,6 +17,7 @@ function AddModule() {
                 body: JSON.stringify(module)
             }
         );
+
         redirectAfterClick()
     }
 
@@ -54,5 +55,3 @@ function AddModule() {
         </div>
     );
 }
-
-export default AddModule

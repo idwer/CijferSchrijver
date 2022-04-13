@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function AddResult() {
+export default function AddResult() {
     // backend code handles generating and storing a timestamp
     const [grade, setGrade] = useState('');
     const [id_module, setIdModule] = useState('');
@@ -18,6 +18,7 @@ function AddResult() {
                 body: JSON.stringify(result)
             }
         );
+
         redirectAfterClick()
     }
 
@@ -56,5 +57,3 @@ function AddResult() {
         </div>
     );
 }
-
-export default AddResult

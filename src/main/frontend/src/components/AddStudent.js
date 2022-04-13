@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-function AddStudent() {
+export default function AddStudent() {
     const [name, setName] = useState('');
     const [surname, setSurName] = useState('');
 
@@ -15,7 +15,8 @@ function AddStudent() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(student)
             }
-            );
+        );
+
         redirectAfterClick()
     }
 
@@ -47,5 +48,3 @@ function AddStudent() {
         </div>
     );
 }
-
-export default AddStudent
